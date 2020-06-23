@@ -132,4 +132,4 @@ dmypy.json
 .idea/
 
 #secret key for django
-pycellfit/pycellfit/secrets.py
+pycellfitweb/pycellfitweb/secrets.py

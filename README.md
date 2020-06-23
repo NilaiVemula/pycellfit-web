@@ -3,4 +3,9 @@ A web-app implementation of pycellfit using Django
 
 ## Getting Started
 
-Making a Django Project:
+Starting server:
+```bash
+    cd pycellfitweb
+    python manage.py runserver
+```
+
