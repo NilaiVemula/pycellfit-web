@@ -5,6 +5,7 @@ A web-app implementation of pycellfit using Django
 
 Starting server:
 ```bash
-    cd pycellfit
+    cd pycellfitweb
     python manage.py runserver
 ```
+
