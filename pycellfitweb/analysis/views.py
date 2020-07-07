@@ -1,3 +1,63 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 
-# Create your views here.
+from .forms import AnalysisForm
+import base64
+from PIL import Image
+
+
+# default home page view
+def home(request):
+    return render(request, 'analysis/home.html')
+
+# view for about page
+def about(request):
+    return render(request, 'analysis/about.html')
+
+# view for form and results
+def analysis(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        print('post')
+        # create a form instance and populate it with data from the request:
+        form = AnalysisForm(request.POST, request.FILES)
+        
+        # validate form
+        if form.is_valid():
+            print('form is valid')
+            print(form.cleaned_data)
+        
+        # extract input parameters from form
+        name = form.cleaned_data['name']
+        image = form.cleaned_data['image']
+
+
+        # convert uploaded image to np array
+        im = Image.open(image)
+        img_array = np.array(im)
+
+        # plot np array using plotly
+        import plotly.express as px
+        from plotly.offline import plot
+    
+        fig = px.imshow(img_array)
+        plt_div = plot(fig, output_type='div')
+
+        # send all form, information, and plot to html template
+        context = {
+            'name': name,
+            'form': form,
+            'plot': plt_div
+        }
+        return render(request, 'analysis/output.html', context)
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        print('get, loading form')
+        form = AnalysisForm()
+        context = {
+            'form': form
+        }
+        
+        return render(request, 'analysis/form.html', context)

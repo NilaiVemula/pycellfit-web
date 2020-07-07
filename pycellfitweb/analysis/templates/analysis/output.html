@@ -1,0 +1,12 @@
+<h1>Form</h1>
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %} {{ form }}
+  <input type="submit" value="Submit" />
+</form>
+
+<h1>Output</h1>
+{{name}}
+
+{% autoescape off %}
+{{ plot }}
+{% endautoescape %}
