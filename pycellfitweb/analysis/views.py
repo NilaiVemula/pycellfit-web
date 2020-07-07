@@ -30,11 +30,20 @@ def analysis(request):
             image = request.FILES.get('image')
             b64_img = base64.b64encode(image.file.read())
             base64_image = str(b64_img)[2:-1]
+            
+            # default parameters
             name = 'initial'
         except:
             base64_image = request.POST.get('base64_image')
             name = request.POST.get('name')
         
+        # prefilling form with base64 image
+        data = {
+            'name':name,
+            'base64_image':base64_image
+        }
+        form = ParametersForm(data)
+
         # convert base64 image to PIL Image object
         im = Image.open(BytesIO(base64.b64decode(base64_image)))
         img_array = np.array(im)
@@ -52,13 +61,12 @@ def analysis(request):
         }
         plt_div = plot(fig, output_type='div', include_plotlyjs=False, show_link=False, link_text="", config=config)
 
-
-
         # send all form, information, and plot to html template
         context = {
             'name': name,
             'base64_image':base64_image,
-            'plot': plt_div
+            'plot': plt_div,
+            'form': form 
         }
         return render(request, 'analysis/output.html', context)
 

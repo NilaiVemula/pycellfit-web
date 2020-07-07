@@ -4,9 +4,8 @@
 
 <h1>Form</h1>
 <form enctype="multipart/form-data" method="post">
-  {% csrf_token %}
-  <tr><th><label for="id_name">Your name:</label></th><td><input type="text" name="name" value={{name}} maxlength="100" required id="id_name"></td></tr>  
-  <tr><th></th><td><input type="text" name="base64_image" value={{base64_image}} maxlength="100000000" hidden></td></tr>  
+  {% csrf_token %} 
+  {{ form.as_p }}
   <input type="submit" value="Update" />
 </form>
 
@@ -17,4 +16,4 @@
 {{ plot }}
 {% endautoescape %}
 
-<a href="home/">Click here to back to the home page</a>
+<a href="home">Click here to back to the home page</a>

@@ -5,4 +5,4 @@ class ImageUploadForm(forms.Form):
 
 class ParametersForm(forms.Form):
     name = forms.CharField(max_length=100)
-    base64_image = forms.CharField(max_length=100000000)
+    base64_image = forms.CharField(max_length=100000000, widget=forms.HiddenInput())
