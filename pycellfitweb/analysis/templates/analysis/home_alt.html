@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>PyCellFIT</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="{% static 'analysis/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Cover Theme CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'analysis/css/cover.css' %}"
+    />
+  </head>
+
+  <body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+            <h3><a class="masthead-brand" href="home">PyCellFIT</a></h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link  active" href="home">Home</a>
+            <a class="nav-link" href="about">About</a>
+            <a class="nav-link" href="form">Start Analysis</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">PyCellFIT Web</h1>
+        <p class="lead">
+          PyCellFIT Web is a tool to infer forces in epithelial cell layers. Built in Python, it is an implementation of the CellFIT method first
+          introduced by Broadland et al. Starting with a segmented image of a cell layer, tensions along cell membranes and pressures within cells can be computed by approximating cell boundaries as poly-arcs.
+        </p>
+        <p class="lead"></p>
+          <button type="submit" class="btn btn-lg btn-secondary">Upload</button>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>
+            Web Implementation for 
+            <a href="https://github.com/NilaiVemula/pycellfit">PyCellFIT</a>, by
+            <a href="https://my.vanderbilt.edu/shanehutson/">the Hutson Lab</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'analysis/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

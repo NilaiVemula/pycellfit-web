@@ -10,7 +10,7 @@ from io import BytesIO
 
 # default home page view
 def home(response):
-    return render(response, 'analysis/home.html')
+    return render(response, 'analysis/home_alt.html')
 
 # view for about page
 
@@ -106,4 +106,4 @@ def analysis(request):
             'form': form
         }
 
-        return render(request, 'analysis/form.html', context)
+        return render(request, 'analysis/upload_form_alt.html', context)

@@ -5,9 +5,9 @@
 {% block content %}
 
 <h1>Form</h1>
-<form enctype="multipart/form-data" method="post">
+<form method="post">
   {% csrf_token %} 
-  {{ form.as_p }}
+  {{ form }}
   <input type="submit" value="Update" />
 </form>
 

@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>PyCellFIT</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap core CSS -->
+    <link
+      href="{% static 'analysis/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+
+    <!-- Cover Theme CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'analysis/css/cover.css' %}"
+    />
+  </head>
+
+  <body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3><a class="masthead-brand" href="home">PyCellFIT</a></h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="home">Home</a>
+            <a class="nav-link" href="about">About</a>
+            <a class="nav-link active" href="form">Start Analysis</a>
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">PyCellFIT Web</h1>
+        
+        
+<!-- CSS for upload box -->
+<style>
+    #customFile .custom-file-input:lang(en)::after {
+      content: "Select file...";
+    }
+    
+    #customFile .custom-file-input:lang(en)::before {
+      content: "Click me";
+    }
+    
+    /*when a value is selected, this class removes the content */
+    .custom-file-input.selected:lang(en)::after {
+      content: "" !important;
+    }
+    
+    .custom-file {
+      overflow: hidden;
+    }
+    .custom-file-input {
+      white-space: nowrap;
+    }
+  </style>
+  
+  <!-- Simple Form to accept tif(f) input files -->
+  <h3>Upload Form</h3>
+  <form enctype="multipart/form-data" method="post" class="form-group">
+    {% csrf_token %} 
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <button class="btn btn-success" type="submit" id="inputGroupFileAddon03">Upload</button>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" accept=".tif,.tiff" required id="id_image" name="image">
+        <label class="custom-file-label" for="id_image">Select File ...</label>
+      </div>
+    </div>
+  </form>
+  
+  <!-- JavaScript to show file name in upload box -->
+  <script>
+    /* show file value after file select */
+    document.querySelector('.custom-file-input').addEventListener('change',function(e){
+      var fileName = document.getElementById("id_image").files[0].name;
+      var nextSibling = e.target.nextElementSibling
+      nextSibling.innerText = fileName
+    })
+  
+  </script>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>
+            Web Implementation for 
+            <a href="https://github.com/NilaiVemula/pycellfit">PyCellFIT</a>, by
+            <a href="https://my.vanderbilt.edu/shanehutson/">the Hutson Lab</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'analysis/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
