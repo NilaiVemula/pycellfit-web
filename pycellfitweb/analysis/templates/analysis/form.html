@@ -4,8 +4,7 @@
 
 {% block content %}
 
-
-
+<!-- CSS for upload box -->
 <style>
   #customFile .custom-file-input:lang(en)::after {
     content: "Select file...";
@@ -28,6 +27,7 @@
   }
 </style>
 
+<!-- Simple Form to accept tif(f) input files -->
 <h3>Upload Form</h3>
 <form enctype="multipart/form-data" method="post" class="form-group">
   {% csrf_token %} 
@@ -42,6 +42,7 @@
   </div>
 </form>
 
+<!-- JavaScript to show file name in upload box -->
 <script>
   /* show file value after file select */
   document.querySelector('.custom-file-input').addEventListener('change',function(e){

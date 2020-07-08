@@ -33,19 +33,47 @@ def analysis(request):
             
             # default parameters
             name = 'initial'
+
+            # prefilling form with base64 image
+            data = {
+                # Image
+                'name':name,
+                'base64_image':base64_image,
+                # Mesh Generation
+                'avg_num_nodes_per_edge': 4,
+                # CellFIT Formulation
+                'tangent_vector_method': 'circle',
+                # CellFIT Solver
+                'tensions': True,
+                'pressures': False,
+                'condition_numbers': False,
+                'standard_errors': False,
+                'residuals': False,
+                'exclude_short_edges': False,
+                'exclude_outside_edges': True,
+                # Display
+                'segmented_image': True,
+                'mesh': True,
+                'tangent_vectors': False,
+                'circle_fit_arcs': False,
+                'tensions': False,
+                'pressures': False,
+                'residual_vectors': False,
+                'nodes': False,
+                'edge_ids': False,
+                'cell_ids': False,
+                'junction_ids': False
+            }
+            form = ParametersForm(initial=data)
+
         except:
-            base64_image = request.POST.get('base64_image')
-            name = request.POST.get('name')
-        
-        # prefilling form with base64 image
-        data = {
-            'name':name,
-            'base64_image':base64_image
-        }
-        form = ParametersForm(data)
+            # In this case, the user is updating results
+            form = ParametersForm(request.POST)
+            data = request.POST
+            
 
         # convert base64 image to PIL Image object
-        im = Image.open(BytesIO(base64.b64decode(base64_image)))
+        im = Image.open(BytesIO(base64.b64decode(data['base64_image'])))
         img_array = np.array(im)
 
         # plot np array using plotly
@@ -63,8 +91,8 @@ def analysis(request):
 
         # send all form, information, and plot to html template
         context = {
-            'name': name,
-            'base64_image':base64_image,
+            'name': data['name'],
+            'base64_image': data['base64_image'],
             'plot': plt_div,
             'form': form 
         }
@@ -73,6 +101,7 @@ def analysis(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ImageUploadForm()
+        
         context = {
             'form': form
         }
