@@ -1,6 +1,9 @@
-<head>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-</head>
+{% extends 'analysis/base.html' %}
+
+{% block title %} Results {% endblock %}
+
+
+{% block content %}
 
 <h1>Form</h1>
 <form enctype="multipart/form-data" method="post">
@@ -17,3 +20,5 @@
 {% endautoescape %}
 
 <a href="home">Click here to back to the home page</a>
+
+{% endblock %}
