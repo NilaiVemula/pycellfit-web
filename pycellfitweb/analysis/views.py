@@ -32,7 +32,7 @@ def analysis(request):
             image = request.FILES.get('image')
             b64_img = base64.b64encode(image.file.read())
             base64_image = str(b64_img)[2:-1]
-
+            # TODO: pass the mesh object
             # default parameters
             name = 'initial'
 
