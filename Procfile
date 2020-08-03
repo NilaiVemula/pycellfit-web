@@ -1,1 +1,1 @@
-'web: gunicorn pycellfitweb.wsgi --log-file -' 
+web: gunicorn pycellfitweb.wsgi --log-file - 
