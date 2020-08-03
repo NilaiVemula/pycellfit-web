@@ -27,7 +27,6 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        cd pycellfitweb
         python manage.py test
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
