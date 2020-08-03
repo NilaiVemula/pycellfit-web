@@ -9,3 +9,6 @@ Starting server:
     python manage.py runserver
 ```
 
+## Technical Overview
+
+- No database models are being used. Files are uploaded using a form, processed using `pycellfit`, and outputs are generated using `plotly`.
